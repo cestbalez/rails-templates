@@ -94,6 +94,11 @@ def set_routes
   route 'resource :landing, only: [:show]'
 end
 
+def copy_files
+  copy_file 'docker-compose.yml'
+  copy_file 'Procfile'
+end
+
 def source_paths
   [File.expand_path(File.dirname(__FILE__))]
 end
@@ -106,6 +111,7 @@ after_bundle do
   configure_environments
   set_routes
   set_default_meta_tags
+  copy_files
 
   # Make sure Linux is in the Gemfile.lock for deploying
   run 'bundle lock --add-platform x86_64-linux'
@@ -116,7 +122,7 @@ after_bundle do
   git :init
   git add: '.'
   git commit: %( -m 'Initial commit' )
-  run 'hub create'
+  run 'gh repo create'
 
   say 'Landing page successfully created!', :blue
 
