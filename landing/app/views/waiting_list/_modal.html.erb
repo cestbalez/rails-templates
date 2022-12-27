@@ -1,0 +1,24 @@
+<!-- Main modal -->
+<%= turbo_frame_tag :remote_modal do %>
+  <div data-controller="modal">
+    <div class="fixed block top-0 left-0 w-full h-full bg-black opacity-50 -z-1" id="myModalBackdrop" data-modal-target="backdrop"></div>
+
+    <!-- Modal content -->
+    <div class="fixed flex top-0 left-0 w-full h-full flex items-center justify-center z-10" id="myModal" data-modal-target="modal">
+      <div class="bg-white relative rounded-lg shadow-lg py-4 px-6 max-w-lg">
+        <h1 class="mt-8 mb-4 lg:mb-12 text-2xl lg:text-3xl font-semibold">Thanks for joining!</h1>
+        <p class="mb-4">The platform is under development and will be ready soon. We'll keep you posted!</p>
+        <p class="mb-4">In the meantime, if you could spare a minute to help us tailor the product to your needs, we'd be very grateful. It only takes a minute!</p>
+        <div class="flex justify-center">
+          <a class="inline-block my-6 mx-auto text-white py-4 px-8 font-normal bg-red-700 rounded no-underline" target='_blank' href="https://:typeform_link?email=<%= waiting_list_user.email %>">
+            I'll help!
+          </a>
+        </div>
+        <!-- Close button -->
+        <button class="absolute top-0 right-0 mt-4 mr-4" data-action="modal#close">
+          <svg class="w-6 h-6 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

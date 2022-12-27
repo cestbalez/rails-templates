@@ -1,0 +1,6 @@
+<%= turbo_stream.replace(:waiting_list) do %>
+  <%= render 'form', disabled: true %>
+<% end %>
+<%= turbo_stream.replace(:remote_modal) do %>
+  <%= render 'modal', waiting_list_user: @waiting_list_user %>
+<% end %>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= default_meta_tags[:site] %> | <%= default_meta_tags[:title] %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path("favicon.png")%>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <!-- Insert Meta pixel -->
+    <!-- Insert Google analytics script -->
+  </head>
+  <body class="antialiased bg-body text-body font-body">
+    <%= display_meta_tags(default_meta_tags) %>
+    <%= yield %>
+  </body>
+  <%= turbo_frame_tag :remote_modal %>
+</html>
