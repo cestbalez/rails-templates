@@ -75,8 +75,8 @@ def add_waiting_list
 
   insert_into_file(
     'app/models/waiting_list_user.rb',
-    "#{content}\n", 
-    after: 'class WaitingListUser < ApplicationRecord\n'
+    "#{content}\n",
+    after: "class WaitingListUser < ApplicationRecord\n"
   )
 
   route 'resources :waiting_list_users, only: [:create]'
