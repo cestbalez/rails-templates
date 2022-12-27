@@ -17,13 +17,13 @@ end
 def set_application_name
   application_name = ask("What is the name of your application? Default: Landing")
 
-  environment "config.application_name = #{application_name.presence || 'Landing'}"
+  environment "config.application_name = '#{application_name.presence || "Landing"}'"
 
   puts "Your application name is #{application_name}. You can change this later on: ./config/application.rb"
 end
 
 def copy_templates
-  directory "app", force: true
+  directory 'app', force: true
 end
 
 def set_default_meta_tags
@@ -116,6 +116,7 @@ after_bundle do
   git :init
   git add: '.'
   git commit: %( -m 'Initial commit' )
+  run 'hub create'
 
   say 'Landing page successfully created!', :blue
 
@@ -123,9 +124,4 @@ after_bundle do
 
   run 'docker-compose up'
   run 'rails db:create db:migrate'
-
-  run 'hub create'
-  git add: '.'
-  git commit: %( -m 'Run migration' )
-  git push: 'origin main'
 end
