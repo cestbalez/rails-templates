@@ -36,12 +36,12 @@ def set_default_meta_tags
   content = <<~RUBY
     def default_meta_tags
       {
-        site: #{website}.presence || 'Landing',
-        title: #{title},
+        site: "#{website}.presence || 'Landing'",
+        title: "#{title}",
         reverse: true,
         separator: '|',
-        description: #{description},
-        keywords: #{keywords},
+        description: "#{description}",
+        keywords: "#{keywords}",
         canonical: request.original_url,
         noindex: !Rails.env.production?,
         icon: [
@@ -49,9 +49,9 @@ def set_default_meta_tags
           { href: image_url('favicon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
         ],
         og: {
-          site_name: #{website}.presence || 'Landing',
-          title: #{title},
-          description: #{description}, 
+          site_name: "#{website}.presence || 'Landing'",
+          title: "#{title}",
+          description: "#{description}", 
           type: 'website',
           url: request.original_url,
           image: image_url('og_banner.jpg')
